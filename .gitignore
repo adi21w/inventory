@@ -10,4 +10,3 @@
 **/uploads/products/*
 !**/uploads/products/.gitkeep
 
-# 4. Tambahan pengaman untuk image jika masih bandel
