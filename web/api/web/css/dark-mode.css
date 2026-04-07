@@ -1,0 +1,19 @@
+:root {
+    --primary-color: #31363c;
+    --secondary-color: #31363a;
+    --third-color: #353a3e;
+}
+
+.dark-mode .bg-dark {
+    background-color: var(--primary-color) !important;
+}
+.dark-mode .bg-nav-x, .dark-mode .sidebar-wrapper, .dark-mode .card {
+    background-color: var(--secondary-color) !important;
+}
+.dark-mode .card-header {
+    background-color: var(--third-color) !important;
+}
+.dark-mode .sidebar-wrapper .menu .submenu .submenu-item.active>a {
+    color: #dcdcdc;
+    font-weight: 700;
+}

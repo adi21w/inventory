@@ -1,0 +1,326 @@
+/* .btn-primary {
+    color: #fff;
+    background-color: #56c7cd;
+    border-color: #56c7cd;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    color: #fff;
+    background-color: #45b5bb;
+    border-color: #45b5bb;
+    rgba(95, 158, 200, 0.5)
+} */
+
+.select2-container--krajee-bs5.select2-container--open:not(.select2-container--disabled) .select2-selection, .select2-container--krajee-bs5:not(.select2-container--disabled) .select2-selection:focus {
+    border-color: #a1d8df;
+    box-shadow: 0 0 0 0.25rem rgb(67 184 190 / 25%);
+}
+
+.select2-container--krajee-bs5 .select2-selection--single .select2-selection__placeholder {
+    color: #7cacaf;
+}
+
+.select2-container--krajee-bs5 li.select2-results__option {
+    color: #3091b9;
+    background-color: #cdfff1;
+}
+
+.sidebar-wrapper .menu .sidebar-link {
+    color: #56c7cd;
+}
+
+.sidebar-wrapper .menu .sidebar-link i, .sidebar-wrapper .menu .sidebar-link svg {
+    color: #72d9df;
+}
+
+.sidebar-wrapper .menu .submenu .submenu-item a {
+    color: #63bcbd;
+}
+
+.bg-primary-g {
+    background: linear-gradient(to right, #6de6ec, #56c7cd);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: white !important; /* Ganti dengan warna kesukaan lo */
+  color: #333; /* Optional: ganti warna teks */
+}
+
+.table>:not(caption)>*>* {
+    background-image: none !important;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e2faff !important; /* Ganti dengan warna lo sendiri */
+  color: #2d3436; /* Optional: ganti warna teks juga */
+}
+.select2-container--krajee-bs5 .select2-selection--single .select2-selection__rendered {
+    color: #607080;
+    padding: 0;
+}
+.select2-container--krajee-bs5 .select2-results__option[aria-selected] {
+    background-color: #fff;
+    color: #607080;
+    border-radius: 0;
+}
+
+.sidebar-wrapper .menu .sidebar-title {
+    font-size: 1.5rem;
+    color: #3db6bd;
+}
+
+.sidebar-wrapper .menu .sidebar-item.active .sidebar-link {
+    background-color: #56c7cd;
+    color: white;
+}
+
+.sidebar-wrapper .menu .submenu .submenu-item.active>a {
+    color: #646464;
+    font-weight: 700;
+}
+
+.btn-group {
+    padding: 0 0.2rem;
+}
+
+.header-panel {
+    padding: 0.5rem;
+    border-radius: 0 1em;
+}
+
+.btn-blue {
+    color: #fff;
+    background-color: #59adff;
+    border-color: #59adff;
+}
+.btn-blue:hover,.btn-blue:focus, .btn-blue:active {
+    color: #fff;
+    background-color: #4094e7;
+    border-color: #4094e7;
+}
+
+.btn-purple {
+    color: #fff;
+    background-color: #9b74e5;
+    border-color: #9b74e5;
+}
+.btn-purple:hover,.btn-purple:focus, .btn-purple:active {
+    color: #fff;
+    background-color: #8d65d7;
+    border-color: #8d65d7;
+}
+
+.btn-orange {
+    color: #fff;
+    background-color: #ff895d;
+    border-color: #ff895d;
+}
+.btn-orange:hover,.btn-orange:focus, .btn-orange:active {
+    color: #fff;
+    background-color: #ec7246;
+    border-color: #ec7246;
+}
+
+.bg-blue {
+    background-color: #59adff;
+}
+
+.footer-base {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.fc-h-event{
+    border: none;
+}
+
+.fc-list-event-title,.fc-event-title {
+    color: #fff;
+}
+.fc-list-event-title:hover {
+    color: #56c7cd;
+}
+
+.fc-event-time, .fc-daygrid-event-dot {
+    display: none;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: rgb(40 218 255 / 15%);
+}
+
+.fc-theme-standard td, .fc-theme-standard th {
+    border: 1px solid #cff2ff;
+}
+
+.not-set {
+    font-style: italic;
+    color: #c94444;
+}
+
+.action-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Supaya bisa turun kalau sempit */
+    gap: 0.25rem;
+    justify-content: center;
+}
+
+.action-wrapper a.btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    white-space: nowrap; /* Biar ikon + teks gak patah */
+}
+
+.box-for-price {
+    overflow: hidden;
+    transition: max-height 0.6s ease, opacity 0.6s ease;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.box-for-price.show {
+    max-height: 500px; /* atau cukup besar untuk kontennya */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Untuk body dan html (scroll halaman utama) */
+html, body {
+    scrollbar-width: thin; /* untuk Firefox */
+    scrollbar-color: #7be5ff #f0f0f0;
+}
+
+.table-dashboard {
+    height: 56vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-color: #7be5ff #ffffff00;
+}
+
+/* Untuk scrollbar */
+.table-dashboard::-webkit-scrollbar {
+    width: .7em; /* lebar scrollbar */
+}
+
+/* Track (latar belakang scrollbar) */
+.table-dashboard::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 4px;
+}
+
+/* Thumb (bagian yang bisa digeser) */
+.table-dashboard::-webkit-scrollbar-thumb {
+    background-color: #7be5ff; /* biru Bootstrap */
+    border-radius: 4px;
+    border: 2px solid #ffffff; /* bikin efek dalam */
+}
+
+/* Hover effect */
+.table-dashboard::-webkit-scrollbar-thumb:hover {
+    background-color: #55c7e4; /* biru gelap pas hover */
+}
+
+.bg-lime {
+    background-color: #8fcd5685 !important;
+    color: #fff;
+}
+
+.bg-orange {
+    background-color: #ffa407 !important;
+}
+
+.btn-copy {
+    cursor: pointer;
+    color: #5baff8;
+}
+
+.cs-pointer {
+    cursor: pointer;
+}
+
+.disabled-load {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(151 244 249 / 53%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.disabled-load.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.gallery-box-product {
+    height: 20rem;
+    overflow: hidden;
+}
+
+.accordion-button {
+    background-color: #a2f9fd;
+    color: #2a8388;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #56c7cd;
+    color: #ffffff;
+}
+
+#accordionDokumentasi {
+    text-align: start;
+}
+
+.counter-list {
+    counter-reset: custom;
+    padding-left: 0;
+    font-size: 1.3em;
+}
+
+.counter-list li {
+    list-style: none;
+    counter-increment: custom;
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 1.5rem;
+}
+
+.counter-list li::before {
+    content: counter(custom) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+.counter-list img {
+    max-width: 65%;
+    min-width: 25%;
+}
+
+@media (max-width: 768px) {
+    .action-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        justify-content: center;
+    }
+    .action-wrapper a.btn {
+        padding: 0.25rem 0.4rem;
+        font-size: 0.75rem;
+    }
+}
+
+
+

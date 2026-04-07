@@ -1,0 +1,13 @@
+# 1. Abaikan semua folder runtime & assets di mana pun lokasinya
+**/runtime/*
+**/assets/*
+
+# 2. Tapi JANGAN abaikan file .gitkeep di dalamnya
+!**/runtime/.gitignore
+!**/assets/.gitignore
+
+# 3. Abaikan folder uploads produk secara total (agar image gak masuk)
+**/uploads/products/*
+!**/uploads/products/.gitkeep
+
+# 4. Tambahan pengaman untuk image jika masih bandel
