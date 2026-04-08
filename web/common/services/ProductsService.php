@@ -13,6 +13,21 @@ use common\helper\Helper;
 class ProductsService
 {
     private $_modul = "Produk";
+    protected function getAttributeMap()
+    {
+        return [
+            'product' => 'vNama',
+            'slug' => 'vSlug',
+            'status' => 'iStatus',
+            'rak' => 'iRak',
+            'kemasan_besar' => 'iKemasanBesarId',
+            'kemasan_kecil' => 'iKemasanKecilId',
+            'isi_besar' => 'iIsiKemasanBesar',
+            'isi_kecil' => 'iIsiKemasanKecil',
+            'price' => 'dPrice',
+            'margin' => 'dMargin'
+        ];
+    }
 
     public function createModel()
     {
@@ -262,5 +277,30 @@ class ProductsService
             $out['results'] = $model;
         }
         return $out;
+    }
+
+    private function _getNameClass()
+    {
+        return \yii\helpers\StringHelper::basename(get_class($this->createModel()));
+    }
+
+    private function _getSearchClass()
+    {
+        return \yii\helpers\StringHelper::basename(get_class($this->createSearch()));
+    }
+
+    public function mapQueryParams($params, $search = false)
+    {
+        $map = $this->getAttributeMap();
+        $baseName = ($search) ? $this->_getSearchClass() : $this->_getNameClass();
+        $result = [$baseName => []];
+
+        foreach ($params as $key => $value) {
+            // Jika ada di map, pakai nama asli. Jika tidak, pakai key aslinya.
+            $realKey = $map[$key] ?? $key;
+            $result[$baseName][$realKey] = $value;
+        }
+
+        return $result;
     }
 }

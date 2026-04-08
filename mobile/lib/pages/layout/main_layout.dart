@@ -90,9 +90,7 @@ class MainLayout extends StatelessWidget {
               onTap: () {
                 // <--- PAKAI onTap
                 Navigator.pop(context);
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(const SnackBar(content: Text('Coming Soon')));
+                Navigator.pushReplacementNamed(context, '/products');
               },
             ),
             ListTile(
@@ -127,9 +125,7 @@ class MainLayout extends StatelessWidget {
               onTap: () {
                 // <--- PAKAI onTap
                 Navigator.pop(context);
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(const SnackBar(content: Text('Coming Soon')));
+                Navigator.pushReplacementNamed(context, '/stocks');
               },
             ),
             const Divider(), // Garis pemisah

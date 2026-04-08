@@ -96,13 +96,22 @@ class Products extends \yii\db\ActiveRecord
                 'slug' => 'vSlug',
                 'status' => 'iStatus',
                 'rak' => function ($model) {
-                    return $model->rak ? $model->rak->vNama : null;
+                    return [
+                        'id' => $model->rak ? $model->rak->iId : null,
+                        'nama' => $model->rak ? $model->rak->vNama : null,
+                    ];
                 },
                 'kemasan_besar' => function ($model) {
-                    return $model->kemasan ? $model->kemasan->vNama : null;
+                    return [
+                        'id' => $model->kemasan ? $model->kemasan->iId : null,
+                        'nama' => $model->kemasan ? $model->kemasan->vNama : null,
+                    ];
                 },
                 'kemasan_kecil' => function ($model) {
-                    return $model->kemasankecil ? $model->kemasankecil->vNama : null;
+                    return [
+                        'id' => $model->kemasankecil ? $model->kemasankecil->iId : null,
+                        'nama' => $model->kemasankecil ? $model->kemasankecil->vNama : null,
+                    ];
                 },
                 'isi_besar' => 'iIsiKemasanBesar',
                 'isi_kecil' => 'iIsiKemasanKecil',

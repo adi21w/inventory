@@ -7,6 +7,9 @@ import 'pages/rack/rack_page.dart';
 import 'pages/rack/rack_form_page.dart';
 import 'pages/warehouse/warehouse_page.dart';
 import 'pages/warehouse/warehouse_form_page.dart';
+import 'pages/product/product_page.dart';
+import 'pages/product/product_form_page.dart';
+import 'pages/stock/stock_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +41,9 @@ class MyApp extends StatelessWidget {
         '/racks-add': (context) => RackFormPage(),
         '/warehouses': (context) => const WarehousePage(),
         '/warehouses-add': (context) => WarehouseFormPage(),
+        '/products': (context) => const ProductPage(),
+        '/products-add': (context) => ProductFormPage(),
+        '/stocks': (context) => const StockPage(),
       },
     );
   }
