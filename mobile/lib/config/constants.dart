@@ -8,4 +8,6 @@ class AppConfig {
   static const String profileEndpoint = '$baseUrl/auth/profile';
   static const String productEndpoint = '$baseUrl/product';
   static const String packEndpoint = '$baseUrl/packs';
+  static const String rackEndpoint = '$baseUrl/racks';
+  static const String warehouseEndpoint = '$baseUrl/warehouses';
 }

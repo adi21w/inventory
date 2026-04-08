@@ -4,15 +4,15 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert';
 import '../config/constants.dart';
 
-class PackService {
+class WarehouseService {
   final storage = const FlutterSecureStorage();
 
-  Future<List<dynamic>?> fetchPacks() async {
+  Future<List<dynamic>?> fetchWarehouses() async {
     String? token = await storage.read(key: 'jwt_token');
 
     try {
       final response = await http.get(
-        Uri.parse(AppConfig.packEndpoint),
+        Uri.parse(AppConfig.warehouseEndpoint),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -29,18 +29,21 @@ class PackService {
     }
   }
 
-  Future<Map<String, dynamic>> createPack(String name) async {
+  Future<Map<String, dynamic>> createWarehouse(
+    String name,
+    String status,
+  ) async {
     String? token = await storage.read(key: 'jwt_token');
 
     try {
       final response = await http.post(
-        Uri.parse(AppConfig.packEndpoint),
+        Uri.parse(AppConfig.warehouseEndpoint),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Authorization': 'Bearer $token',
         },
-        body: jsonEncode({'pack': name}),
+        body: jsonEncode({'warehouse': name, 'stock_status': status}),
       );
 
       // Ambil body response dari Yii2 (status & message)
@@ -58,12 +61,14 @@ class PackService {
     }
   }
 
-  // Ambil detail pack berdasarkan ID
-  Future<Map<String, dynamic>?> fetchPackDetail(int id) async {
+  // Ambil detail warehouse berdasarkan ID
+  Future<Map<String, dynamic>?> fetchWarehouseDetail(int id) async {
     String? token = await storage.read(key: 'jwt_token');
     try {
       final response = await http.get(
-        Uri.parse("${AppConfig.packEndpoint}/$id"), // Contoh: /packs/1
+        Uri.parse(
+          "${AppConfig.warehouseEndpoint}/$id",
+        ), // Contoh: /warehouses/1
         headers: {
           'Authorization': 'Bearer $token',
           'Accept': 'application/json',
@@ -76,18 +81,22 @@ class PackService {
     }
   }
 
-  // Update pack
-  Future<Map<String, dynamic>> updatePack(int id, String name) async {
+  // Update warehouse
+  Future<Map<String, dynamic>> updateWarehouse(
+    int id,
+    String name,
+    String status,
+  ) async {
     String? token = await storage.read(key: 'jwt_token');
     try {
       final response = await http.patch(
         // Sesuai permintaan lo pakai PATCH
-        Uri.parse("${AppConfig.packEndpoint}/$id"),
+        Uri.parse("${AppConfig.warehouseEndpoint}/$id"),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
         },
-        body: jsonEncode({'pack': name}),
+        body: jsonEncode({'warehouse': name, 'stock_status': status}),
       );
       final data = jsonDecode(response.body);
       return {

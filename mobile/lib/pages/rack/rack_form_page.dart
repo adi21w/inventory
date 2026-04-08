@@ -1,18 +1,18 @@
 // lib/pack_form_page.dart
 import 'package:flutter/material.dart';
-import '../../api/pack_service.dart';
+import '../../api/rack_service.dart';
 
-class PackFormPage extends StatefulWidget {
-  const PackFormPage({super.key});
+class RackFormPage extends StatefulWidget {
+  const RackFormPage({super.key});
 
   @override
-  State<PackFormPage> createState() => _PackFormPageState();
+  State<RackFormPage> createState() => _RackFormPageState();
 }
 
-class _PackFormPageState extends State<PackFormPage> {
+class _RackFormPageState extends State<RackFormPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
-  final _apiService = PackService();
+  final _apiService = RackService();
   bool _isLoading = false;
 
   void _submitData() async {
@@ -20,7 +20,7 @@ class _PackFormPageState extends State<PackFormPage> {
       setState(() => _isLoading = true);
 
       // Panggil API
-      final result = await _apiService.createPack(_nameController.text);
+      final result = await _apiService.createRack(_nameController.text);
 
       setState(() => _isLoading = false);
 
@@ -69,14 +69,14 @@ class _PackFormPageState extends State<PackFormPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Pack",
+                "Rack",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
               const SizedBox(height: 8),
               TextFormField(
                 controller: _nameController,
                 decoration: InputDecoration(
-                  hintText: 'Example: Kardus A, Botol Plastik, dll',
+                  hintText: 'Example: 1A, 1B, 1C',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -89,7 +89,7 @@ class _PackFormPageState extends State<PackFormPage> {
                   ),
                 ),
                 validator: (value) =>
-                    value!.isEmpty ? 'Require Pack Name' : null,
+                    value!.isEmpty ? 'Require Rack Name' : null,
               ),
               const SizedBox(height: 24),
               _isLoading

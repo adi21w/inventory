@@ -109,9 +109,7 @@ class MainLayout extends StatelessWidget {
               onTap: () {
                 // <--- PAKAI onTap
                 Navigator.pop(context);
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(const SnackBar(content: Text('Coming Soon')));
+                Navigator.pushReplacementNamed(context, '/racks');
               },
             ),
             ListTile(
@@ -120,9 +118,7 @@ class MainLayout extends StatelessWidget {
               onTap: () {
                 // <--- PAKAI onTap
                 Navigator.pop(context);
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(const SnackBar(content: Text('Coming Soon')));
+                Navigator.pushReplacementNamed(context, '/warehouses');
               },
             ),
             ListTile(
@@ -170,7 +166,7 @@ class MainLayout extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.home, color: Colors.white),
                 onPressed: () {
-                  // Tambahkan navigasi ke home jika perlu
+                  Navigator.pushReplacementNamed(context, '/home');
                 },
               ),
               IconButton(

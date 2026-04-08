@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'pages/auth/login_page.dart';
 import 'pages/home/home_page.dart';
-import 'pages/pack/pack_page.dart'; // Import halaman baru lo
-import 'pages/pack/pack_form_page.dart'; // Import halaman baru lo
+import 'pages/pack/pack_page.dart';
+import 'pages/pack/pack_form_page.dart';
+import 'pages/rack/rack_page.dart';
+import 'pages/rack/rack_form_page.dart';
+import 'pages/warehouse/warehouse_page.dart';
+import 'pages/warehouse/warehouse_form_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,10 +30,14 @@ class MyApp extends StatelessWidget {
 
       // 2. Daftar rute aplikasi lo di sini
       routes: {
-        '/': (context) => LoginPage(), // Halaman Login
-        '/home': (context) => const HomePage(), // Halaman Dashboard
-        '/packs': (context) => const PackPage(), // Halaman List Kemasan
-        '/packs-add': (context) => PackFormPage(), // Halaman Tambah Kemasan
+        '/': (context) => LoginPage(),
+        '/home': (context) => const HomePage(),
+        '/packs': (context) => const PackPage(),
+        '/packs-add': (context) => PackFormPage(),
+        '/racks': (context) => const RackPage(),
+        '/racks-add': (context) => RackFormPage(),
+        '/warehouses': (context) => const WarehousePage(),
+        '/warehouses-add': (context) => WarehouseFormPage(),
       },
     );
   }

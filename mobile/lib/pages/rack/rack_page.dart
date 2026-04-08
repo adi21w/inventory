@@ -1,31 +1,31 @@
-// lib/pack_page.dart
+// lib/rack_page.dart
 import 'package:flutter/material.dart';
-import '../../api/pack_service.dart';
+import '../../api/rack_service.dart';
 import '../layout/main_layout.dart';
-import 'pack_update_page.dart';
+import 'rack_update_page.dart';
 
-class PackPage extends StatefulWidget {
-  const PackPage({super.key});
+class RackPage extends StatefulWidget {
+  const RackPage({super.key});
 
   @override
-  State<PackPage> createState() => _PackPageState();
+  State<RackPage> createState() => _RackPageState();
 }
 
-class _PackPageState extends State<PackPage> {
-  final PackService _packService = PackService();
-  List<dynamic> _packs = [];
+class _RackPageState extends State<RackPage> {
+  final RackService _rackService = RackService();
+  List<dynamic> _racks = [];
   bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadPacks();
+    _loadRacks();
   }
 
-  Future<void> _loadPacks() async {
-    final data = await _packService.fetchPacks();
+  Future<void> _loadRacks() async {
+    final data = await _rackService.fetchRacks();
     setState(() {
-      _packs = data ?? [];
+      _racks = data ?? [];
       _isLoading = false;
     });
   }
@@ -33,7 +33,7 @@ class _PackPageState extends State<PackPage> {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      title: "List Packs",
+      title: "List Racks",
       content: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Column(
@@ -47,14 +47,14 @@ class _PackPageState extends State<PackPage> {
                     onPressed: () async {
                       var refresh = await Navigator.pushNamed(
                         context,
-                        '/packs-add',
+                        '/racks-add',
                       );
                       if (refresh == true) {
-                        _loadPacks(); // Refresh otomatis pas balik dari form
+                        _loadRacks(); // Refresh otomatis pas balik dari form
                       }
                     },
                     icon: const Icon(Icons.add),
-                    label: const Text("Add Pack"),
+                    label: const Text("Add Rack"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF56C7CD),
                       foregroundColor: Colors.white,
@@ -69,14 +69,14 @@ class _PackPageState extends State<PackPage> {
                 const SizedBox(height: 16), // Jarak antara tombol dan list
                 const Divider(), // Garis pemisah biar rapi
                 // 2. LIST DATA
-                _packs.isEmpty
+                _racks.isEmpty
                     ? const Center(child: Text("Data kemasan kosong"))
                     : ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: _packs.length,
+                        itemCount: _racks.length,
                         itemBuilder: (context, index) {
-                          final item = _packs[index];
+                          final item = _racks[index];
                           return Card(
                             margin: const EdgeInsets.symmetric(vertical: 8),
                             child: ListTile(
@@ -84,7 +84,7 @@ class _PackPageState extends State<PackPage> {
                                 Icons.inventory_2,
                                 color: Color(0xFF56C7CD),
                               ),
-                              title: Text("${item['pack']}"),
+                              title: Text("${item['rack']}"),
                               trailing: const Icon(
                                 Icons.arrow_forward_ios,
                                 size: 16,
@@ -94,14 +94,14 @@ class _PackPageState extends State<PackPage> {
                                 var refresh = await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => PackUpdatePage(
-                                      packId: item['id'],
+                                    builder: (context) => RackUpdatePage(
+                                      rackId: item['id'],
                                     ), // Ambil ID dari list item
                                   ),
                                 );
 
                                 if (refresh == true) {
-                                  _loadPacks(); // Refresh list kalau ada perubahan
+                                  _loadRacks(); // Refresh list kalau ada perubahan
                                 }
                               },
                             ),

@@ -1,26 +1,33 @@
-// lib/pack_form_page.dart
+// lib/pages/warehouse/warehouse_form_page.dart
 import 'package:flutter/material.dart';
-import '../../api/pack_service.dart';
+import '../../api/warehouse_service.dart';
 
-class PackFormPage extends StatefulWidget {
-  const PackFormPage({super.key});
+class WarehouseFormPage extends StatefulWidget {
+  const WarehouseFormPage({super.key});
 
   @override
-  State<PackFormPage> createState() => _PackFormPageState();
+  State<WarehouseFormPage> createState() => _WarehouseFormPageState();
 }
 
-class _PackFormPageState extends State<PackFormPage> {
+class _WarehouseFormPageState extends State<WarehouseFormPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
-  final _apiService = PackService();
+  final _apiService = WarehouseService();
   bool _isLoading = false;
+
+  // 1. Tambahkan variabel untuk menampung pilihan "Ya/Tidak"
+  // Kita pakai value "1" untuk Ya dan "0" untuk Tidak (atau sesuaikan dengan API Yii2 kamu)
+  String _selectedStatus = "Ya";
 
   void _submitData() async {
     if (_formKey.currentState!.validate()) {
       setState(() => _isLoading = true);
 
-      // Panggil API
-      final result = await _apiService.createPack(_nameController.text);
+      // 2. Kirim dua argumen: Nama dan Status
+      final result = await _apiService.createWarehouse(
+        _nameController.text,
+        _selectedStatus,
+      );
 
       setState(() => _isLoading = false);
 
@@ -32,10 +39,7 @@ class _PackFormPageState extends State<PackFormPage> {
               backgroundColor: Colors.green,
             ),
           );
-          Navigator.pop(
-            context,
-            true,
-          ); // Balik ke list sambil bawa instruksi refresh
+          Navigator.pop(context, true);
         }
       } else {
         if (mounted) {
@@ -55,7 +59,7 @@ class _PackFormPageState extends State<PackFormPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Tambah Kemasan",
+          "Tambah Warehouse",
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: const Color(0xFF56C7CD),
@@ -69,29 +73,53 @@ class _PackFormPageState extends State<PackFormPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Pack",
+                "Warehouse Name",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
               const SizedBox(height: 8),
               TextFormField(
                 controller: _nameController,
                 decoration: InputDecoration(
-                  hintText: 'Example: Kardus A, Botol Plastik, dll',
+                  hintText: 'Example: GOODS, EXPIRED',
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Color(0xFF56C7CD),
-                      width: 2,
-                    ),
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
                 validator: (value) =>
-                    value!.isEmpty ? 'Require Pack Name' : null,
+                    value!.isEmpty ? 'Require Warehouse Name' : null,
               ),
-              const SizedBox(height: 24),
+
+              const SizedBox(height: 20),
+
+              // 3. INPUT SELECT OPTION (DROPDOWN)
+              const Text(
+                "Stock Status (Ya/Tidak)",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+              const SizedBox(height: 8),
+              DropdownButtonFormField<String>(
+                value: _selectedStatus,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 4,
+                  ),
+                ),
+                items: const [
+                  DropdownMenuItem(value: "Ya", child: Text("Ya")),
+                  DropdownMenuItem(value: "Tidak", child: Text("Tidak")),
+                ],
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _selectedStatus = newValue!;
+                  });
+                },
+              ),
+
+              const SizedBox(height: 32),
               _isLoading
                   ? const Center(child: CircularProgressIndicator())
                   : SizedBox(

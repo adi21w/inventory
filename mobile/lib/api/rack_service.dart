@@ -4,15 +4,15 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert';
 import '../config/constants.dart';
 
-class PackService {
+class RackService {
   final storage = const FlutterSecureStorage();
 
-  Future<List<dynamic>?> fetchPacks() async {
+  Future<List<dynamic>?> fetchRacks() async {
     String? token = await storage.read(key: 'jwt_token');
 
     try {
       final response = await http.get(
-        Uri.parse(AppConfig.packEndpoint),
+        Uri.parse(AppConfig.rackEndpoint),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -29,18 +29,18 @@ class PackService {
     }
   }
 
-  Future<Map<String, dynamic>> createPack(String name) async {
+  Future<Map<String, dynamic>> createRack(String name) async {
     String? token = await storage.read(key: 'jwt_token');
 
     try {
       final response = await http.post(
-        Uri.parse(AppConfig.packEndpoint),
+        Uri.parse(AppConfig.rackEndpoint),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Authorization': 'Bearer $token',
         },
-        body: jsonEncode({'pack': name}),
+        body: jsonEncode({'rack': name}),
       );
 
       // Ambil body response dari Yii2 (status & message)
@@ -58,12 +58,12 @@ class PackService {
     }
   }
 
-  // Ambil detail pack berdasarkan ID
-  Future<Map<String, dynamic>?> fetchPackDetail(int id) async {
+  // Ambil detail rack berdasarkan ID
+  Future<Map<String, dynamic>?> fetchRackDetail(int id) async {
     String? token = await storage.read(key: 'jwt_token');
     try {
       final response = await http.get(
-        Uri.parse("${AppConfig.packEndpoint}/$id"), // Contoh: /packs/1
+        Uri.parse("${AppConfig.rackEndpoint}/$id"), // Contoh: /racks/1
         headers: {
           'Authorization': 'Bearer $token',
           'Accept': 'application/json',
@@ -76,18 +76,18 @@ class PackService {
     }
   }
 
-  // Update pack
-  Future<Map<String, dynamic>> updatePack(int id, String name) async {
+  // Update rack
+  Future<Map<String, dynamic>> updateRack(int id, String name) async {
     String? token = await storage.read(key: 'jwt_token');
     try {
       final response = await http.patch(
         // Sesuai permintaan lo pakai PATCH
-        Uri.parse("${AppConfig.packEndpoint}/$id"),
+        Uri.parse("${AppConfig.rackEndpoint}/$id"),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
         },
-        body: jsonEncode({'pack': name}),
+        body: jsonEncode({'rack': name}),
       );
       final data = jsonDecode(response.body);
       return {

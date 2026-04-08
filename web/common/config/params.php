@@ -7,7 +7,7 @@ return [
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
     'bsVersion' => '5.x', // ini wajib!
-    'WebUrl' => 'http://inventory.test/',
+    'WebUrl' => 'http://localhost:8080/',
     'ppn' => 11,
     'baseRes' => ['status' => true, 'message' => '404 Not Found']
 ];

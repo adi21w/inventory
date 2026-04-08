@@ -1,31 +1,31 @@
-// lib/pack_page.dart
+// lib/warehouse_page.dart
 import 'package:flutter/material.dart';
-import '../../api/pack_service.dart';
+import '../../api/warehouse_service.dart';
 import '../layout/main_layout.dart';
-import 'pack_update_page.dart';
+import 'warehouse_update_page.dart';
 
-class PackPage extends StatefulWidget {
-  const PackPage({super.key});
+class WarehousePage extends StatefulWidget {
+  const WarehousePage({super.key});
 
   @override
-  State<PackPage> createState() => _PackPageState();
+  State<WarehousePage> createState() => _WarehousePageState();
 }
 
-class _PackPageState extends State<PackPage> {
-  final PackService _packService = PackService();
-  List<dynamic> _packs = [];
+class _WarehousePageState extends State<WarehousePage> {
+  final WarehouseService _warehouseService = WarehouseService();
+  List<dynamic> _warehouses = [];
   bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadPacks();
+    _loadWarehouses();
   }
 
-  Future<void> _loadPacks() async {
-    final data = await _packService.fetchPacks();
+  Future<void> _loadWarehouses() async {
+    final data = await _warehouseService.fetchWarehouses();
     setState(() {
-      _packs = data ?? [];
+      _warehouses = data ?? [];
       _isLoading = false;
     });
   }
@@ -33,7 +33,7 @@ class _PackPageState extends State<PackPage> {
   @override
   Widget build(BuildContext context) {
     return MainLayout(
-      title: "List Packs",
+      title: "List Warehouses",
       content: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Column(
@@ -47,14 +47,14 @@ class _PackPageState extends State<PackPage> {
                     onPressed: () async {
                       var refresh = await Navigator.pushNamed(
                         context,
-                        '/packs-add',
+                        '/warehouses-add',
                       );
                       if (refresh == true) {
-                        _loadPacks(); // Refresh otomatis pas balik dari form
+                        _loadWarehouses(); // Refresh otomatis pas balik dari form
                       }
                     },
                     icon: const Icon(Icons.add),
-                    label: const Text("Add Pack"),
+                    label: const Text("Add Warehouse"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF56C7CD),
                       foregroundColor: Colors.white,
@@ -69,14 +69,14 @@ class _PackPageState extends State<PackPage> {
                 const SizedBox(height: 16), // Jarak antara tombol dan list
                 const Divider(), // Garis pemisah biar rapi
                 // 2. LIST DATA
-                _packs.isEmpty
-                    ? const Center(child: Text("Data kemasan kosong"))
+                _warehouses.isEmpty
+                    ? const Center(child: Text("Data gudang kosong"))
                     : ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: _packs.length,
+                        itemCount: _warehouses.length,
                         itemBuilder: (context, index) {
-                          final item = _packs[index];
+                          final item = _warehouses[index];
                           return Card(
                             margin: const EdgeInsets.symmetric(vertical: 8),
                             child: ListTile(
@@ -84,24 +84,23 @@ class _PackPageState extends State<PackPage> {
                                 Icons.inventory_2,
                                 color: Color(0xFF56C7CD),
                               ),
-                              title: Text("${item['pack']}"),
+                              title: Text("${item['warehouse']}"),
                               trailing: const Icon(
                                 Icons.arrow_forward_ios,
                                 size: 16,
                               ),
                               onTap: () async {
-                                // Pindah ke halaman update sambil kirim ID
                                 var refresh = await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => PackUpdatePage(
-                                      packId: item['id'],
-                                    ), // Ambil ID dari list item
+                                    builder: (context) => WarehouseUpdatePage(
+                                      warehouseId: item['id'],
+                                    ),
                                   ),
                                 );
 
                                 if (refresh == true) {
-                                  _loadPacks(); // Refresh list kalau ada perubahan
+                                  _loadWarehouses(); // Refresh list kalau ada perubahan
                                 }
                               },
                             ),
