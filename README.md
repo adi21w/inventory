@@ -26,4 +26,5 @@
 ## Migration Database
 
 1. Buka _command prompt / terminal_ yang mengarah pada folder **web** yang sudah di clone
-2. Jalankan perintah `php yii migrate --migrationPath=@mdm/autonumber/migrations` untuk membuat tabel Auto Number
+2. Jalankan perintah `php yii migrate --interactive=0` terlebih dulu
+3. Jalankan perintah `php yii migrate --migrationPath=@mdm/autonumber/migrations` untuk membuat tabel Auto Number
