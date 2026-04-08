@@ -3,6 +3,7 @@
 ## Require
 
 - PHP v8.1+
+- Flutter SDK
 - MySQL / MariaDB
 - Postman
 - Composer
@@ -45,8 +46,10 @@
 2. Untuk Windows buka Pengaturan: Klik tombol `Start`, lalu ketik **"Developer Settings"**
 3. **Aktifkan Developer Mode**: Cari pilihan **Developer Mode** (Mode Pengembang) dan geser tombolnya ke arah **On** (Aktif)
 4. Masuk ke folder **mobile** (Root Mobile) dan Open Project (VSCode) didalam folder tersebut
-5. Buka _terminal_ dan jalankan perintah `flutter pub get`
+5. Install _extention_ **Flutter** pada VSCode jika belum ada
+6. Buka _terminal_ dan jalankan perintah `flutter pub get`
+7. In progress, waiting for the next commit.
 
 ## NOTES
 
-- Saya menggunakan **Laragon** dan memberi _virtual host_ ke frontend/web dan api/web agar lebih mudah dalam development
+- Saya menggunakan **Laragon** dan memberi _virtual host_ ke frontend/web dan api/web agar lebih mudah dalam development web
