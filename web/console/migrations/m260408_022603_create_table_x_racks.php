@@ -15,7 +15,7 @@ class m260408_022603_create_table_x_racks extends Migration
         }
 
         $this->createTable('{{%m_rack}}', [
-            'iId' => $this->smallPrimaryKey(),
+            'iId' => $this->primaryKey(),
             'vNama' => $this->string(25)->notNull()->comment('Nama Rack'),
             'eDeleted' => "ENUM('Ya','Tidak') DEFAULT 'Tidak' COMMENT 'Pasif Delete'",
             'tCreated' => $this->timestamp()

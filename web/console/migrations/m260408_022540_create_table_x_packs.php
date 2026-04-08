@@ -15,7 +15,7 @@ class m260408_022540_create_table_x_packs extends Migration
         }
 
         $this->createTable('{{%m_packs}}', [
-            'iId' => $this->smallPrimaryKey(),
+            'iId' => $this->primaryKey(),
             'vNama' => $this->string(25)->notNull()->comment('Nama Kemasan'),
             'eDeleted' => "ENUM('Ya','Tidak') DEFAULT 'Tidak' COMMENT 'Pasif Delete'",
             'tCreated' => $this->timestamp()

@@ -1,5 +1,5 @@
 <?php
-define('SYS_DB', 'mysql:host=127.0.0.1;port=3307;dbname=db_inventory');
+define('SYS_DB', 'mysql:host=127.0.0.1;port=3307;dbname=db_clone');
 define('SYS_USERNAME', 'root');
 define('SYS_PASSWORD', '123456');
 return [

@@ -6,6 +6,7 @@
 - MySQL / MariaDB
 - Postman
 - Composer
+- Laragon / XAMPP (opsional)
 
 ## Sistem SSR Frontend
 
@@ -28,3 +29,12 @@
 1. Buka _command prompt / terminal_ yang mengarah pada folder **web** yang sudah di clone
 2. Jalankan perintah `php yii migrate --interactive=0` terlebih dulu
 3. Jalankan perintah `php yii migrate --migrationPath=@mdm/autonumber/migrations` untuk membuat tabel Auto Number
+
+## Running System
+
+- Untuk menjalankan Frontend SSR gunakan perintah `php yii serve --docroot="frontend/web"` atau bisa menggunakan **Web Service** Seperti Nginx / Apache
+- Untuk menjalankan REST API gunakan perintah `php yii serve --docroot="api/web"` atau bisa menggunakan **Web Service** Seperti Nginx / Apache
+
+## NOTES
+
+- Saya menggunakan **laragon** dan memberi _virtual host_ ke Frontend dan Api agar lebih mudah dalam development

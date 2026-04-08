@@ -29,7 +29,7 @@ $user = Yii::$app->user->identity;
                             </div>
                             <div class="col-md-8">
                                 <h6 class="text-muted font-semibold">Products In Goods</h6>
-                                <h6 class="font-extrabold mb-0"><?= $stock['qtyin'] ?></h6>
+                                <h6 class="font-extrabold mb-0"><?= $stock['qtyin'] ?? 0 ?></h6>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@ $user = Yii::$app->user->identity;
                             </div>
                             <div class="col-md-8">
                                 <h6 class="text-muted font-semibold">Products Out Goods</h6>
-                                <h6 class="font-extrabold mb-0"><?= $stock['qtyout'] ?></h6>
+                                <h6 class="font-extrabold mb-0"><?= $stock['qtyout'] ?? 0 ?></h6>
                             </div>
                         </div>
                     </div>
