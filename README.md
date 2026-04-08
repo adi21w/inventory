@@ -49,10 +49,12 @@
 4. Masuk ke folder **mobile** (Root Mobile) dan Open Project (VSCode) didalam folder tersebut
 5. Install _extention_ **Flutter** pada VSCode jika belum ada
 6. Buka _terminal_ dan jalankan perintah `flutter pub get`
-7. Masuk ke folder `lib` > `config`, dan buka file `constants.dart`
-8. Ubah bagian di **line 4** `static const String baseUrl = '[YOUR HOST]';`
-9. Pada menu VSCode pilih `Run` > `Start Debuggin` atau bisa tekan tombol `F5`
-10. Login menggunakan username `X0001` dan password `147852` untuk mencoba
+7. Arahkan Flutter SDK, jika menggunakan Windows jalankan perintah `flutter config --android-sdk "C:\Users\[YOUR PC NAME]\AppData\Local\Android\Sdk"`
+8. Masuk ke folder `lib` > `config`, dan buka file `constants.dart`
+9. Ubah bagian di **line 4** `static const String baseUrl = '[YOUR HOST]';`
+10. Pada menu VSCode pilih `Run` > `Start Debuggin` atau bisa tekan tombol `F5`
+11. Jika Debug tidak berjalan, gunakan perintah `flutter doctor` lalu `flutter run -d chrome`
+12. Login menggunakan username `X0001` dan password `147852` untuk mencoba
 
 ## NOTES
 
