@@ -10,6 +10,16 @@ use yii\web\UnauthorizedHttpException;
 
 class AuthController extends Controller
 {
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::class, // Atau \yii\filters\Cors
+        ];
+
+        return $behaviors;
+    }
+
     public function actionLogin()
     {
         $request = Yii::$app->request;
@@ -37,6 +47,16 @@ class AuthController extends Controller
 
         return [
             'token' => $token,
+        ];
+    }
+
+    // AuthController.php di Yii2
+    public function actionProfile()
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return [
+            'message' => 'Halo, ini data dari profile lo!',
+            'user' => \Yii::$app->user->identity,
         ];
     }
 }

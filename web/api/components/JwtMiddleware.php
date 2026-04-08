@@ -37,7 +37,12 @@ class JwtMiddleware extends Behavior
             throw new \yii\web\UnauthorizedHttpException('Token tidak ditemukan');
         }
 
-        $token = trim(str_replace('Bearer', '', $authHeader));
+        if (preg_match('/^Bearer\s+(.*?)$/', $authHeader, $matches)) {
+            $token = $matches[1];
+        } else {
+            throw new \yii\web\UnauthorizedHttpException('Format token salah');
+        }
+
         $key = Yii::$app->params['jwtSecret'];
 
         try {

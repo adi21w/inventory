@@ -10,3 +10,16 @@
 **/uploads/products/*
 !**/uploads/products/.gitkeep
 
+# Metadata IDE
+mobile/.dart_tool/
+mobile/.packages
+mobile/.pub-cache/
+mobile/.pub/
+mobile/build/
+
+# Konfigurasi spesifik OS
+mobile/.metadata
+mobile/.ios/
+mobile/.android/
+mobile/android/app/local.properties
+mobile/android/app/key.properties

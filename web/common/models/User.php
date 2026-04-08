@@ -71,10 +71,6 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * {@inheritdoc}
      */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
-    }
 
     /**
      * Finds user by username
@@ -211,5 +207,18 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        try {
+            $key = Yii::$app->params['jwtSecret'];
+            // Decode tokennya
+            $decoded = \Firebase\JWT\JWT::decode($token, new \Firebase\JWT\Key($key, 'HS256'));
+            // Cari user berdasarkan 'uid' yang kita masukin di payload pas login
+            return static::findOne($decoded->uid);
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 }

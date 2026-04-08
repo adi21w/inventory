@@ -46,6 +46,7 @@ return [
                     'pluralize' => true, // URL: /products, /packs, dsb.
                 ],
                 'POST auth/login' => 'auth/login',
+                'GET auth/profile' => 'auth/profile',
             ],
         ],
     ],
