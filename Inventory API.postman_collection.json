@@ -34,6 +34,82 @@
               "raw": "{{base_url}}products",
               "host": [
                 "{{base_url}}products"
+              ],
+              "query": [
+                {
+                  "key": "rak",
+                  "value": "1C",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \"product\": \"Vaccum Pump\",\r\n        \"slug\": \"vaccum-pump\",\r\n        \"status\": 1,\r\n        \"rak\": 1,\r\n        \"kemasan_besar\": 1,\r\n        \"kemasan_kecil\": 2,\r\n        \"isi_besar\": 1,\r\n        \"isi_kecil\": 5,\r\n        \"price\": 72000,\r\n        \"margin\": 15\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}products",
+              "host": [
+                "{{base_url}}products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"rak\": 2,\r\n    \"price\": 75000\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}products/3",
+              "host": [
+                "{{base_url}}products"
+              ],
+              "path": [
+                "3"
               ]
             }
           },
@@ -95,6 +171,16 @@
         {
           "name": "Detail Pack",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -166,6 +252,16 @@
         {
           "name": "List Warehouse",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -297,6 +393,16 @@
         {
           "name": "List Rack",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -451,6 +557,33 @@
           ],
           "path": [
             "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Profil",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}auth/profile",
+          "host": [
+            "{{base_url}}auth"
+          ],
+          "path": [
+            "profile"
           ]
         }
       },
