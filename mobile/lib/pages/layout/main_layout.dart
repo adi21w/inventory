@@ -1,7 +1,7 @@
 // lib/main_layout.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'login_page.dart';
+import '../auth/login_page.dart';
 
 class MainLayout extends StatelessWidget {
   final Widget content; // Tempat isi halaman (Main Content)
@@ -80,9 +80,8 @@ class MainLayout extends StatelessWidget {
               leading: const Icon(Icons.dashboard),
               title: const Text('Dashboard'),
               onTap: () {
-                // <--- PAKAI onTap, BUKAN onPressed
                 Navigator.pop(context); // Tutup drawer
-                // Logika pindah halaman jika perlu
+                Navigator.pushReplacementNamed(context, '/home');
               },
             ),
             ListTile(
@@ -100,11 +99,8 @@ class MainLayout extends StatelessWidget {
               leading: const Icon(Icons.label),
               title: const Text('Packs'),
               onTap: () {
-                // <--- PAKAI onTap
                 Navigator.pop(context);
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(const SnackBar(content: Text('Coming Soon')));
+                Navigator.pushReplacementNamed(context, '/packs');
               },
             ),
             ListTile(

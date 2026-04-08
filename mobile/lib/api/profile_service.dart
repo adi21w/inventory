@@ -2,9 +2,9 @@
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert';
-import 'constants.dart';
+import '../config/constants.dart';
 
-class ApiService {
+class ProfileService {
   final storage = const FlutterSecureStorage();
 
   Future<Map<String, dynamic>?> fetchDataRahasia() async {

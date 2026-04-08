@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'home_page.dart';
-import 'constants.dart';
+import '../home/home_page.dart';
+import '../../config/constants.dart';
 
 class LoginPage extends StatefulWidget {
   @override

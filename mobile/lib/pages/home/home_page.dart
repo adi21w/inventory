@@ -1,7 +1,7 @@
 // lib/home_page.dart
 import 'package:flutter/material.dart';
-import 'api_service.dart'; // Import service yang kita buat tadi
-import 'main_layout.dart';
+import '../../api/profile_service.dart'; // Import service yang kita buat tadi
+import '../layout/main_layout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final ApiService _apiService = ApiService();
+  final ProfileService _profileService = ProfileService();
 
   dynamic _userData;
   bool _isLoading = true;
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _loadData() async {
-    final result = await _apiService.fetchDataRahasia();
+    final result = await _profileService.fetchDataRahasia();
 
     if (result != null) {
       setState(() {
