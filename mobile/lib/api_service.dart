@@ -2,10 +2,10 @@
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert';
+import 'constants.dart';
 
 class ApiService {
   final storage = const FlutterSecureStorage();
-  final String baseUrl = 'http://localhost:8080'; // Sesuaikan IP & Port
 
   Future<Map<String, dynamic>?> fetchDataRahasia() async {
     // 1. Ambil token dari storage
@@ -13,7 +13,7 @@ class ApiService {
 
     try {
       final response = await http.get(
-        Uri.parse('$baseUrl/auth/profile'),
+        Uri.parse(AppConfig.profileEndpoint),
 
         headers: {
           'Content-Type': 'application/json',

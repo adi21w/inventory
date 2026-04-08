@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'home_page.dart';
+import 'constants.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
       _isLoading = true;
     });
 
-    final String apiUrl = 'http://localhost:8080/auth/login';
+    final String apiUrl = AppConfig.loginEndpoint; // Ambil URL dari constants
 
     try {
       final response = await http

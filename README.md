@@ -27,6 +27,7 @@
 13. Lanjut ubah bagian `define('SYS_PASSWORD', '[YOUR DB PASSWORD]');` tanpa tanda `[]`
 14. Masih didalam folder yang sama, Buka file **params.php**
 15. Ubah _value_ dari _key_ **WebUrl** dengan DNS anda (default **http://localhost:8080**)
+16. Login menggunakan username `X0001` dan password `147852` untuk mencoba
 
 ## Migration Database
 
