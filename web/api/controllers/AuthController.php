@@ -55,7 +55,7 @@ class AuthController extends Controller
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return [
-            'message' => 'Halo, ini data dari profile lo!',
+            'message' => 'Success',
             'user' => \Yii::$app->user->identity,
         ];
     }

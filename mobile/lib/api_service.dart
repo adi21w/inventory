@@ -18,7 +18,7 @@ class ApiService {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Authorization': 'Bearer $token', // Pamer kartu member
+          'Authorization': 'Bearer $token',
         },
       );
 

@@ -1,6 +1,7 @@
 // lib/home_page.dart
 import 'package:flutter/material.dart';
 import 'api_service.dart'; // Import service yang kita buat tadi
+import 'main_layout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,12 +12,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ApiService _apiService = ApiService();
-  String _data = "Sedang mengambil data...";
+
+  dynamic _userData;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    // Panggil fungsi ambil data pas halaman pertama kali dibuka
     _loadData();
   }
 
@@ -25,20 +27,41 @@ class _HomePageState extends State<HomePage> {
 
     if (result != null) {
       setState(() {
-        _data = result['message'] ?? "Data kosong";
+        _userData = result['user'];
+        _isLoading = false;
       });
     } else {
       setState(() {
-        _data = "Gagal mengambil data. Mungkin token expired?";
+        _userData = null;
+        _isLoading = false;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Dashboard')),
-      body: Center(child: Text(_data, style: const TextStyle(fontSize: 18))),
+    return MainLayout(
+      title: "Dashboard Inventory",
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // Biar teks rata kiri
+        children: [
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: _isLoading
+                ? const CircularProgressIndicator()
+                : _userData != null
+                ? Text(
+                    "Selamat Datang, ${_userData['name']}",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: const Color.fromARGB(255, 108, 117, 117),
+                    ),
+                  ) // PAKAI KURUNG KURAWAL {}
+                : const Text("Gagal mengambil data atau token expired"),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -35,7 +35,6 @@ class _LoginPageState extends State<LoginPage> {
               'Accept': 'application/json',
             },
             body: jsonEncode({
-              // Pastikan key ini sama dengan yang diminta API Yii2 lo
               'username': _usernameController.text,
               'password': _passwordController.text,
             }),
@@ -111,7 +110,25 @@ class _LoginPageState extends State<LoginPage> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: _login,
-                      child: const Text('LOGIN'),
+                      // --- TAMBAHKAN STYLE DI SINI ---
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(
+                          0xFF56C7CD,
+                        ), // Warna latar belakang tombol
+                        foregroundColor: Colors.white, // Warna teks dan ikon
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            8,
+                          ), // Membuat sudut agak melengkung
+                        ),
+                      ),
+                      child: const Text(
+                        'LOGIN',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
           ],
